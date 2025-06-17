@@ -1,9 +1,9 @@
 "use client";
 
-// import MobileSidebar from "@/components/admin/MobileSidebar";
 import Image from "next/image";
 import { IoLogOutOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
+import MobileSidebar from "./MobileSidebar";
 
 function Navbar({
   toggleSidebar,
@@ -19,7 +19,7 @@ function Navbar({
               <RxHamburgerMenu className="w-6 h-6 text-blue-950" />
             </button>
           </div>
-          {/* <MobileSidebar permissions={permissions} /> */}
+          <MobileSidebar />
         </div>
         <div className="flex-none navbar-end">
           <div className="flex items-center me-0 lg:me-8">

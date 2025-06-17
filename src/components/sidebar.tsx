@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { BiBook } from "react-icons/bi";
 import { IoSettingsOutline } from "react-icons/io5";
 import { PiChartPieSliceDuotone } from "react-icons/pi";
 
@@ -65,7 +66,7 @@ export default function Sidebar({
                 href="/buku"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <PiChartPieSliceDuotone className="text-lg ms-1" />
+                <BiBook className="text-lg ms-1" />
                 Buku
               </Link>
             </li>
