@@ -12,7 +12,7 @@ function Navbar({
 }) {
   return (
    <div>
-      <div className="navbar border-b-1">
+      <div className="navbar border-b-1 border-gray-300">
         <div className="flex-none navbar-start">
           <div className="hidden lg:block">
             <button className="btn btn-square btn-ghost" onClick={toggleSidebar}>

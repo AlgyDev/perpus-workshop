@@ -1,8 +1,22 @@
+import ListBuku from "@/components/ListBuku";
+
 export default function Home() {
   return (
-  <div className="bg-blue-500 text-white p-6 rounded-lg shadow-lg">
-      <h1 className="text-2xl font-bold">Hello, Tailwind!</h1>
-      <p className="mt-2">Tailwind is working 🎉</p>
+    <div className="ms-2">
+      {/* head */}
+      <div className="breadcrumbs text-2xl font-bold">
+        <ul>
+          <li>
+            <span className="inline-flex items-center gap-1">
+              List Buku
+            </span>
+          </li>
+        </ul>
+      </div>
+      {/* main */}
+      <div>
+        <ListBuku />
+      </div>
     </div>
   );
 }
