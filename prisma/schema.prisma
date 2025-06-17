@@ -14,18 +14,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Siswa {
-  id         Int     @id @default(autoincrement())
-  nama       String
-  nis        String  @unique
-  kelas      String
-  bukuPinjam Buku[]  @relation("SiswaBuku")
-}
-
 model Buku {
   id          Int     @id @default(autoincrement())
   judul       String
   penulis     String
-  dipinjamOleh Siswa? @relation("SiswaBuku", fields: [siswaId], references: [id])
-  siswaId     Int?
+  description String?
+  image       String? 
 }
