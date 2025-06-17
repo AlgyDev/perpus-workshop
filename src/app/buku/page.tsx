@@ -2,6 +2,7 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import Link from "next/link";
 import ListBuku from "./components/list";
 
+export const dynamic = "force-dynamic";
 export default async function buku() {
 return (
   <div className="ms-2">
