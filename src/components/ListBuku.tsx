@@ -1,4 +1,5 @@
 import { listBuku } from "@/app/buku/action/list";
+import Image from "next/image";
 
 export default async function ListBukuPage() {
   const response = await listBuku();
@@ -21,10 +22,13 @@ export default async function ListBukuPage() {
               >
                 <div className="flex items-center justify-center mb-2">
                   <div className="max-h-64 max-w-40">
-                    <img
-                      src={buku.image || "/logo/user.jpg"}
-                      alt={buku.judul}
-                      className="transition-all rounded-xl min-h-64 object-cover"
+                    <Image
+                        src={buku.image || "/logo/user.jpg"}
+                        alt="Preview"
+                        quality={100}
+                        width={100}
+                        height={100}
+                        className="transition-all rounded-xl min-h-64 object-cover"
                     />
                   </div>
                 </div>

@@ -1,0 +1,4 @@
+# .eslintignore
+
+# Abaikan semua file hasil generate Prisma
+src/generated/

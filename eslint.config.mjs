@@ -10,6 +10,12 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  // Exclude specific folders or files
+  {
+    ignores: ["src/generated/**"], // <<< Tambahkan ini untuk mengabaikan folder generated
+  },
+
+  // Extend recommended rules
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
 
