@@ -21,35 +21,40 @@ export default async function ListBukuPage() {
                 className="p-4 cursor-pointer w-full sm:w-64 bg-[#F5F5F5] hover:shadow-md rounded-xl"
               >
                 <div className="flex items-center justify-center mb-2">
-                  <div className="max-h-64 max-w-40">
+                  <div className="relative max-h-64 max-w-40 h-64 w-40">
                     <Image
-                        src={buku.image || "/logo/user.jpg"}
-                        alt="Preview"
-                        quality={100}
-                        width={100}
-                        height={100}
-                        className="transition-all rounded-xl min-h-64 object-cover"
+                      src={buku.image || "/logo/user.jpg"}
+                      alt="Preview"
+                      fill
+                      className="object-cover rounded-xl"
                     />
                   </div>
+
                 </div>
 
                 <div className="p-2 flex flex-col">
-                  <div className="tooltip text-left" data-tip={buku.penulis}>
-                    <p className="font-light text-xs font-work-sans line-clamp-1">
-                      {buku.penulis}
-                    </p>
-                  </div>
+                  <p
+                    className="font-work-sans rounded-full pb-1 px-3 bg-[#4361FF1A] text-blue-500 mb-2 w-fit"
+                    >
+                    <small>Soft Cover</small>
+                  </p>
 
                   <div className="tooltip text-left" data-tip={buku.judul}>
                     <p
-                      className="font-semibold font-work-sans mb-2 line-clamp-3"
+                      className="font-semibold font-work-sans mb-1 line-clamp-3"
                       title={buku.judul}
                     >
                       {buku.judul}
                     </p>
                   </div>
 
-                  <p className="font-light text-sm font-work-sans mb-2">
+                  <div className="tooltip text-left" data-tip={buku.penulis}>
+                    <p className="font-light text-sm font-work-sans mb-1 line-clamp-1 text-gray-400">
+                      {buku.penulis}
+                    </p>
+                  </div>
+
+                  <p className="font-light text-xs font-work-sans mb-2 text-gray-400">
                     2025
                   </p>
                 </div>
