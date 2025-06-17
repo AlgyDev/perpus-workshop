@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
       bodySizeLimit: "10mb",
     },
   },
+  images: {
+    domains: [
+      "xxomkwhpokcfpirspqfb.supabase.co"
+    ],
+  },
   devIndicators: false
 };
 

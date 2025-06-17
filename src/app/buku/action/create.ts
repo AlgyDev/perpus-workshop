@@ -1,8 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import fs from "fs";
-import path from "path";
+import { supabase } from "@/lib/supabase";
 
 export async function CreateBuku(formData: FormData) {
   const judul = formData.get("judul") as string;
@@ -12,23 +11,32 @@ export async function CreateBuku(formData: FormData) {
 
   let imagePath: string | null = null;
 
-  // Simpan file ke folder publik (misal: /public/uploads)
   if (file && file.size > 0 && file.name !== "undefined") {
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
+    const fileExt = file.name.split(".").pop();
+    const fileName = `${Date.now()}.${fileExt}`;
+    const fileBuffer = Buffer.from(await file.arrayBuffer());
 
-    const filename = `${Date.now()}-${file.name}`;
-    const uploadDir = path.join(process.cwd(), "public", "uploads");
+    const { error } = await supabase.storage
+    .from("perpus-workshop")
+    .upload(fileName, fileBuffer, {
+      contentType: file.type,
+      upsert: true,
+    });
+
 
     // Buat folder jika belum ada
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
+    if (error) {
+      console.error("Upload error:", error.message);
+      return { status: 500, message: "Failed to upload image." };
     }
 
-    const uploadPath = path.join(uploadDir, filename);
-    fs.writeFileSync(uploadPath, buffer);
+      // Dapatkan URL public file
+    const { data: publicURL } = supabase
+      .storage
+      .from("perpus-workshop")
+      .getPublicUrl(fileName);
 
-    imagePath = `/uploads/${filename}`;
+    imagePath = publicURL?.publicUrl ?? null;
   }
 
   try {
